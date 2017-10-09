@@ -1,15 +1,18 @@
 package by.tc.task01.dao.impl;
 
 import by.tc.task01.dao.ApplianceDAO;
+import by.tc.task01.dao.command.ApplianceDirector;
+import by.tc.task01.dao.command.Command;
 import by.tc.task01.entity.*;
 import by.tc.task01.entity.criteria.Criteria;
-import by.tc.task01.entity.criteria.SearchCriteria;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,11 +28,14 @@ public class ApplianceDAOImpl implements ApplianceDAO{
     @Override
     public <E> Appliance find(Criteria<E> criteria) {
         resource = ApplianceDAOImpl.class.getResource(FILE_PATH);
-        Object[] objects = readFile(criteria);
+        List<Object> parameters = readFile(criteria);
+        ApplianceDirector director = new ApplianceDirector();
+        Command command = director.getCommand(criteria.getApplianceTypeName());
+        command.executed(parameters);
         return null;
     }
 
-    private Object[] readFile(Criteria criteria) {
+    private List<Object> readFile(Criteria criteria) {
         try {
             String line;
             Pattern genericSearchPattern = getPattern(GENERIC_SEARCH_RE, criteria.getApplianceTypeName());
@@ -39,7 +45,7 @@ public class ApplianceDAOImpl implements ApplianceDAO{
                 if (genericMatcher.find()) {
                     int countOfSuitableCriteria = getCountOfSuitableCriteria(criteria, line);
                     if (countOfSuitableCriteria == criteria.getMapSize()) {
-                        return createAppliance(genericMatcher.group(), line);
+                        return findAllCriteriaResult(line);
                     }
                 }
             }
@@ -72,7 +78,15 @@ public class ApplianceDAOImpl implements ApplianceDAO{
         return countOfSuitableCriteria;
     }
 
-
+    private List<Object> findAllCriteriaResult(String line) {
+        List<Object> parameters = new ArrayList<>();
+        Pattern allCriteriaResultPattern = getPattern(CRITERIA_RESULT_RE, "");
+        Matcher allCriteriaResultMatcher = allCriteriaResultPattern.matcher(line);
+        while (allCriteriaResultMatcher.find()) {
+            parameters.add(allCriteriaResultMatcher.group());
+        }
+        return parameters;
+    }
 
     private Pattern getPattern(String regularExpression, String newVariable) {
         String modifiedRE = regularExpression.replace(VARIABLE, newVariable);

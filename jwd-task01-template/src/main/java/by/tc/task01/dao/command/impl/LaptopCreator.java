@@ -4,9 +4,11 @@ import by.tc.task01.dao.command.Command;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.Laptop;
 
+import java.util.List;
+
 public class LaptopCreator implements Command {
     @Override
-    public Appliance executed(Object[] objects) {
+    public Appliance executed(List<Object> parameters) {
         Laptop laptop = new Laptop();
         return null;
     }

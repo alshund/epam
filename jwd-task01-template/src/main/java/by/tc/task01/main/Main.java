@@ -39,11 +39,22 @@ public class Main {
 		//////////////////////////////////////////////////////////////////
 
 		Criteria<TabletPC> criteriaTabletPC = new Criteria<TabletPC>();
+		criteriaTabletPC.setApplianceTypeName("TabletPC");
 		criteriaTabletPC.add(TabletPC.COLOR, "BLUE");
 		criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, 14);
 		criteriaTabletPC.add(TabletPC.MEMORY_ROM, 4);
 
 		appliance = service.find(criteriaOven);
+
+		PrintApplianceInfo.print(appliance);
+
+		//////////////////////////////////////////////////////////////////
+
+		Criteria<Laptop> criteriaLaptop = new Criteria<>();
+		criteriaLaptop.setApplianceTypeName("Laptop");
+		criteriaLaptop.add(Laptop.OS, 12.1);
+
+		appliance = service.find(criteriaLaptop);
 
 		PrintApplianceInfo.print(appliance);
 

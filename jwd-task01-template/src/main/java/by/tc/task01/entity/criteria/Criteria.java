@@ -12,8 +12,8 @@ public class Criteria<E> {
 		criteria.put(searchCriteria, value);
 	}
 
-	public String getValue(E searchCriteria) {
-		return criteria.get(searchCriteria).toString();
+	public Object getValue(E searchCriteria) {
+		return criteria.get(searchCriteria);
 	}
 
 	public String getApplianceTypeName() {

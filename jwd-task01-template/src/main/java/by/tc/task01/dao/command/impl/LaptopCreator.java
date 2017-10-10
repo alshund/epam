@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LaptopCreator implements Command {
     @Override
-    public Appliance executed(List<Object> parameters) {
+    public Appliance executed(List<String> parameters) {
         Laptop laptop = new Laptop();
         return null;
     }

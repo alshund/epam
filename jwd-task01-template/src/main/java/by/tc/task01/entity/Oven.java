@@ -1,5 +1,7 @@
 package by.tc.task01.entity;
 
+import by.tc.task01.entity.criteria.SearchCriteria;
+
 public class Oven extends Appliance{
     private int powerConsumption;
     private int weight;
@@ -7,6 +9,11 @@ public class Oven extends Appliance{
     private int depth;
     private double height;
     private double width;
+
+    @Override
+    public String getAllParameters() {
+        return powerConsumption + " " + " " + width + " " + capacity + " " + depth + " " + height + " " + width;
+    }
 
     @Override
     public boolean equals(Object o) {

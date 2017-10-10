@@ -9,6 +9,12 @@ public class Refrigerator extends Appliance{
     private int width;
 
     @Override
+    public String getAllParameters() {
+        return powerConsumption + " " + weight + " " + freezerCapacity + " " +
+               overallCapacity + " " + height + " " + width;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

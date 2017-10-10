@@ -18,33 +18,34 @@ public class Main {
 
 		Criteria<Oven> criteriaOven = new Criteria<Oven>();
 		criteriaOven.setApplianceTypeName("Oven");
-		criteriaOven.add(Oven.CAPACITY, 32);
+		criteriaOven.add(Oven.CAPACITY, 3);
 		criteriaOven.add(Oven.DEPTH, 60);
 
 		appliance = service.find(criteriaOven);
 
 		PrintApplianceInfo.print(appliance);
 
-//		//////////////////////////////////////////////////////////////////
-//
-//		criteriaOven = new Criteria<Oven>();
-//		criteriaOven.add(Oven.HEIGHT, 200);
-//		criteriaOven.add(Oven.DEPTH, 300);
-//
-//		appliance = service.find(criteriaOven);
-//
-//		PrintApplianceInfo.print(appliance);
-//
-//		//////////////////////////////////////////////////////////////////
-//
-//		Criteria<TabletPC> criteriaTabletPC = new Criteria<TabletPC>();
-//		criteriaTabletPC.add(TabletPC.COLOR, "BLUE");
-//		criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, 14);
-//		criteriaTabletPC.add(TabletPC.MEMORY_ROM, 4);
-//
-//		appliance = service.find(criteriaOven);
-//
-//		PrintApplianceInfo.print(appliance);
+		//////////////////////////////////////////////////////////////////
+
+		criteriaOven = new Criteria<Oven>();
+		criteriaOven.setApplianceTypeName("Oven");
+		criteriaOven.add(Oven.HEIGHT, 200);
+		criteriaOven.add(Oven.DEPTH, 300);
+
+		appliance = service.find(criteriaOven);
+
+		PrintApplianceInfo.print(appliance);
+
+		//////////////////////////////////////////////////////////////////
+
+		Criteria<TabletPC> criteriaTabletPC = new Criteria<TabletPC>();
+		criteriaTabletPC.add(TabletPC.COLOR, "BLUE");
+		criteriaTabletPC.add(TabletPC.DISPLAY_INCHES, 14);
+		criteriaTabletPC.add(TabletPC.MEMORY_ROM, 4);
+
+		appliance = service.find(criteriaOven);
+
+		PrintApplianceInfo.print(appliance);
 
 	}
 

@@ -1,10 +1,15 @@
 package by.tc.task01.entity;
 
 public class Speakers extends Appliance{
-   private int powerConsumption;
-   private int numberOfSpeakers;
-   private String frequencyRange;
-   private int cordLength;
+    private int powerConsumption;
+    private int numberOfSpeakers;
+    private String frequencyRange;
+    private int cordLength;
+
+    @Override
+    public String getAllParameters() {
+        return powerConsumption + " " + numberOfSpeakers + " " + frequencyRange + " " + cordLength;
+    }
 
     @Override
     public boolean equals(Object o) {

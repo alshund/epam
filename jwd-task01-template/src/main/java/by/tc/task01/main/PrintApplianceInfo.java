@@ -5,7 +5,12 @@ import by.tc.task01.entity.Appliance;
 public class PrintApplianceInfo {
 	
 	public static void print(Appliance appliance) {
-		System.out.println("test");
+		if (appliance != null) {
+			System.out.println(appliance.getAllParameters());
+		}
+		else {
+			System.out.println("Not enough");
+		}
 
 	}
 	

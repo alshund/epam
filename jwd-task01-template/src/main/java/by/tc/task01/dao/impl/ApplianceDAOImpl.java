@@ -28,14 +28,18 @@ public class ApplianceDAOImpl implements ApplianceDAO{
     @Override
     public <E> Appliance find(Criteria<E> criteria) {
         resource = ApplianceDAOImpl.class.getResource(FILE_PATH);
-        List<Object> parameters = readFile(criteria);
-        ApplianceDirector director = new ApplianceDirector();
-        Command command = director.getCommand(criteria.getApplianceTypeName());
-        command.executed(parameters);
-        return null;
+        List<String> parameters = readFile(criteria);
+        if (parameters != null) {
+            ApplianceDirector director = new ApplianceDirector();
+            Command command = director.getCommand(criteria.getApplianceTypeName());
+            return command.executed(parameters);
+        }
+        else {
+            return null;
+        }
     }
 
-    private List<Object> readFile(Criteria criteria) {
+    private List<String> readFile(Criteria criteria) {
         try {
             String line;
             Pattern genericSearchPattern = getPattern(GENERIC_SEARCH_RE, criteria.getApplianceTypeName());
@@ -78,8 +82,8 @@ public class ApplianceDAOImpl implements ApplianceDAO{
         return countOfSuitableCriteria;
     }
 
-    private List<Object> findAllCriteriaResult(String line) {
-        List<Object> parameters = new ArrayList<>();
+    private List<String> findAllCriteriaResult(String line) {
+        List<String> parameters = new ArrayList<>();
         Pattern allCriteriaResultPattern = getPattern(CRITERIA_RESULT_RE, "");
         Matcher allCriteriaResultMatcher = allCriteriaResultPattern.matcher(line);
         while (allCriteriaResultMatcher.find()) {

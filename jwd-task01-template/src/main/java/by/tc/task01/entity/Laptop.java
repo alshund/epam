@@ -4,8 +4,13 @@ public class Laptop extends Appliance{
     private double batteryCapacity;
     private String os;
     private int memoryRom;
-    private double cpu;
-    private int displayInches;
+    private int cpu;
+    private double displayInches;
+
+    @Override
+    public String getAllParameters() {
+        return batteryCapacity + " " + os + " " + memoryRom + " " + cpu + " " + displayInches;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -16,8 +21,8 @@ public class Laptop extends Appliance{
 
         if (Double.compare(laptop.batteryCapacity, batteryCapacity) != 0) return false;
         if (memoryRom != laptop.memoryRom) return false;
-        if (Double.compare(laptop.cpu, cpu) != 0) return false;
-        if (displayInches != laptop.displayInches) return false;
+        if (cpu != laptop.cpu) return false;
+        if (Double.compare(laptop.displayInches, displayInches) != 0) return false;
         return os != null ? os.equals(laptop.os) : laptop.os == null;
     }
 
@@ -29,9 +34,9 @@ public class Laptop extends Appliance{
         result = (int) (temp ^ (temp >>> 32));
         result = 31 * result + (os != null ? os.hashCode() : 0);
         result = 31 * result + memoryRom;
-        temp = Double.doubleToLongBits(cpu);
+        result = 31 * result + cpu;
+        temp = Double.doubleToLongBits(displayInches);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + displayInches;
         return result;
     }
 
@@ -59,19 +64,19 @@ public class Laptop extends Appliance{
         this.memoryRom = memoryRom;
     }
 
-    public double getCpu() {
+    public int getCpu() {
         return cpu;
     }
 
-    public void setCpu(double cpu) {
+    public void setCpu(int cpu) {
         this.cpu = cpu;
     }
 
-    public int getDisplayInches() {
+    public double getDisplayInches() {
         return displayInches;
     }
 
-    public void setDisplayInches(int displayInches) {
+    public void setDisplayInches(double displayInches) {
         this.displayInches = displayInches;
     }
 }

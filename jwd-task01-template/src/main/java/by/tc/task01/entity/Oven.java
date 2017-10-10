@@ -1,32 +1,56 @@
 package by.tc.task01.entity;
 
-import by.tc.task01.entity.criteria.SearchCriteria;
-
 public class Oven extends Appliance{
+
     private int powerConsumption;
+
     private int weight;
+
     private int capacity;
+
     private int depth;
+
     private double height;
+
     private double width;
 
     @Override
     public String getAllParameters() {
-        return powerConsumption + " " + " " + width + " " + capacity + " " + depth + " " + height + " " + width;
+
+        return "Oven : POWER_CONSUMPTION = " + powerConsumption +
+                ", WIDTH = " + width +
+                ", CAPACITY = " + capacity +
+                ", DEPTH = " + depth +
+                ", HEIGHT = " + height +
+                ", WIDTH = " + width + ";";
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Oven oven = (Oven) o;
 
-        if (powerConsumption != oven.powerConsumption) return false;
-        if (weight != oven.weight) return false;
-        if (capacity != oven.capacity) return false;
-        if (depth != oven.depth) return false;
-        if (Double.compare(oven.height, height) != 0) return false;
+        if (powerConsumption != oven.powerConsumption) {
+            return false;
+        }
+        if (weight != oven.weight) {
+            return false;
+        }
+        if (capacity != oven.capacity) {
+            return false;
+        }
+        if (depth != oven.depth) {
+            return false;
+        }
+        if (Double.compare(oven.height, height) != 0) {
+            return false;
+        }
         return Double.compare(oven.width, width) == 0;
     }
 

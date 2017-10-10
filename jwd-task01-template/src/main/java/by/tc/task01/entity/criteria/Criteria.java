@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Criteria<E> {
+
 	private String applianceTypeName;
 
 	private Map<E, Object> criteria = new HashMap<E, Object>();
@@ -31,6 +32,5 @@ public class Criteria<E> {
 	public Object[] getKeyArray() {
 		return criteria.keySet().toArray();
 	}
-	// you may add your own code here
 
 }

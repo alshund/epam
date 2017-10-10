@@ -12,7 +12,9 @@ public class ApplianceServiceImpl implements ApplianceService{
 
 	@Override
 	public <E> Appliance find(Criteria<E> criteria) {
+
 		if (!Validator.criteriaValidator(criteria)) {
+			PrintApplianceInfo.print(criteria.getApplianceTypeName());
 			return null;
 		}
 		
@@ -20,12 +22,8 @@ public class ApplianceServiceImpl implements ApplianceService{
 		ApplianceDAO applianceDAO = factory.getApplianceDAO();
 		
 		Appliance appliance = applianceDAO.find(criteria);
-		
-		// you may add your own code here
-		
+
 		return appliance;
 	}
 
 }
-
-//you may add your own new classes

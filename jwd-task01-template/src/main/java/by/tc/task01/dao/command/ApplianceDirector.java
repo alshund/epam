@@ -6,9 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ApplianceDirector {
+
     private Map<String, Command> commands = new HashMap<>();
 
     public ApplianceDirector() {
+
         commands.put("Oven", new OvenCreator());
         commands.put("Laptop", new LaptopCreator());
         commands.put("Speakers", new SpeakersCreator());
@@ -18,8 +20,10 @@ public class ApplianceDirector {
     }
 
     public Command getCommand(String applianceTypeName) {
+
         Command command;
         command = commands.get(applianceTypeName);
         return command;
     }
+
 }

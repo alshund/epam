@@ -1,31 +1,56 @@
 package by.tc.task01.entity;
 
 public class Refrigerator extends Appliance{
+
     private int powerConsumption;
+
     private int weight;
+
     private int freezerCapacity;
+
     private double overallCapacity;
+
     private int height;
+
     private int width;
 
     @Override
     public String getAllParameters() {
-        return powerConsumption + " " + weight + " " + freezerCapacity + " " +
-               overallCapacity + " " + height + " " + width;
+
+        return "Refrigerator : POWER_CONSUMPTION = " + powerConsumption +
+                ", WEIGHT = " + weight +
+                ", FREEZER_CAPACITY = " + freezerCapacity +
+                ", OVERALL_CAPACITY " + overallCapacity +
+                ", HEIGHT = " + height +
+                ", WIDTH = " + width + ";";
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Refrigerator that = (Refrigerator) o;
 
-        if (powerConsumption != that.powerConsumption) return false;
-        if (weight != that.weight) return false;
-        if (freezerCapacity != that.freezerCapacity) return false;
-        if (Double.compare(that.overallCapacity, overallCapacity) != 0) return false;
-        if (height != that.height) return false;
+        if (powerConsumption != that.powerConsumption) {
+            return false;
+        }
+        if (weight != that.weight) {
+            return false;
+        }
+        if (freezerCapacity != that.freezerCapacity) {
+            return false;
+        }
+        if (Double.compare(that.overallCapacity, overallCapacity) != 0) {
+            return false;
+        }
+        if (height != that.height) {
+            return false;
+        }
         return width == that.width;
     }
 

@@ -6,8 +6,10 @@ import by.tc.task01.entity.criteria.SearchCriteria;
 import by.tc.task01.service.validation.command.ValidationCommand;
 
 public class VacuumCleanerValidation implements ValidationCommand {
+
     @Override
     public boolean executed(Criteria criteria, Object[] keyArray) {
+
         for (Object key : keyArray) {
             if (SearchCriteria.VacuumCleaner.FILTER_TYPE.equals(key)
                     || SearchCriteria.VacuumCleaner.BAG_TYPE.equals(key)
@@ -17,7 +19,7 @@ public class VacuumCleanerValidation implements ValidationCommand {
                 }
             }
             else {
-                if (!Regular.isNumber(String.valueOf(criteria.getValue(criteria)))) {
+                if (!Regular.isNumber(String.valueOf(criteria.getValue(key)))) {
                     return false;
                 }
             }

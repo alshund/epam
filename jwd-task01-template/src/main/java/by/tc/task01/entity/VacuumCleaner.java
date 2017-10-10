@@ -1,11 +1,17 @@
 package by.tc.task01.entity;
 
 public class VacuumCleaner extends Appliance{
+
     private int powerConsumption;
+
     private String filterType;
+
     private String bagType;
+
     private String wandType;
+
     private int motorSpeedRegulation;
+
     private int cleaningWidth;
 
     @Override
@@ -16,16 +22,30 @@ public class VacuumCleaner extends Appliance{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         VacuumCleaner that = (VacuumCleaner) o;
 
-        if (powerConsumption != that.powerConsumption) return false;
-        if (motorSpeedRegulation != that.motorSpeedRegulation) return false;
-        if (cleaningWidth != that.cleaningWidth) return false;
-        if (filterType != null ? !filterType.equals(that.filterType) : that.filterType != null) return false;
-        if (bagType != null ? !bagType.equals(that.bagType) : that.bagType != null) return false;
+        if (powerConsumption != that.powerConsumption) {
+            return false;
+        }
+        if (motorSpeedRegulation != that.motorSpeedRegulation) {
+            return false;
+        }
+        if (cleaningWidth != that.cleaningWidth) {
+            return false;
+        }
+        if (filterType != null ? !filterType.equals(that.filterType) : that.filterType != null) {
+            return false;
+        }
+        if (bagType != null ? !bagType.equals(that.bagType) : that.bagType != null) {
+            return false;
+        }
         return wandType != null ? wandType.equals(that.wandType) : that.wandType == null;
     }
 

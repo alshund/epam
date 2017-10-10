@@ -18,6 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ApplianceDAOImpl implements ApplianceDAO{
+
     private final String FILE_PATH = "/appliances_db.txt";
 
     private URL resource;
@@ -25,6 +26,7 @@ public class ApplianceDAOImpl implements ApplianceDAO{
 
     @Override
     public <E> Appliance find(Criteria<E> criteria) {
+
         resource = ApplianceDAOImpl.class.getResource(FILE_PATH);
         List<String> parameters = readFile(criteria);
         if (parameters != null) {
@@ -38,6 +40,7 @@ public class ApplianceDAOImpl implements ApplianceDAO{
     }
 
     private List<String> readFile(Criteria criteria) {
+
         try {
             String line;
             Pattern genericSearchPattern = getPattern(Regular.GENERIC_SEARCH, criteria.getApplianceTypeName());
@@ -46,7 +49,7 @@ public class ApplianceDAOImpl implements ApplianceDAO{
                 Matcher genericMatcher = genericSearchPattern.matcher(line);
                 if (genericMatcher.find()) {
                     int countOfSuitableCriteria = getCountOfSuitableCriteria(criteria, line);
-                    if (countOfSuitableCriteria == criteria.getMapSize()) {
+                    if (isAllCriteriaSuitable(criteria, countOfSuitableCriteria)) {
                         return findAllCriteriaResult(line);
                     }
                 }
@@ -65,14 +68,19 @@ public class ApplianceDAOImpl implements ApplianceDAO{
         return null;
     }
 
+    private boolean isAllCriteriaSuitable(Criteria criteria, int countOfSuitableCriteria) {
+        return countOfSuitableCriteria == criteria.getMapSize();
+    }
+
     private int getCountOfSuitableCriteria(Criteria criteria, String line) {
+
         int countOfSuitableCriteria = 0;
         Object[] keyArray = criteria.getKeyArray();
         for (Object key : keyArray) {
             Pattern criteriaResultPattern = getPattern(Regular.CRITERIA_RESULT, key.toString());
             Matcher criteriaResultMatcher = criteriaResultPattern.matcher(line);
             if (criteriaResultMatcher.find()) {
-                if (criteriaResultMatcher.group().equals(criteria.getValue(key))) {
+                if (isSuitableCriteria(criteria, key, criteriaResultMatcher)) {
                     ++countOfSuitableCriteria;
                 }
             }
@@ -80,9 +88,14 @@ public class ApplianceDAOImpl implements ApplianceDAO{
         return countOfSuitableCriteria;
     }
 
+    private boolean isSuitableCriteria(Criteria criteria, Object key, Matcher criteriaResultMatcher) {
+        return criteriaResultMatcher.group().equals(criteria.getValue(key).toString());
+    }
+
     private List<String> findAllCriteriaResult(String line) {
+
         List<String> parameters = new ArrayList<>();
-        Pattern allCriteriaResultPattern = getPattern(Regular.CRITERIA_RESULT, "");
+        Pattern allCriteriaResultPattern = getPattern(Regular.CRITERIA_RESULT, Regular.EMPTY_STRING);
         Matcher allCriteriaResultMatcher = allCriteriaResultPattern.matcher(line);
         while (allCriteriaResultMatcher.find()) {
             parameters.add(allCriteriaResultMatcher.group());
@@ -91,6 +104,7 @@ public class ApplianceDAOImpl implements ApplianceDAO{
     }
 
     private Pattern getPattern(String regularExpression, String newVariable) {
+
         String modifiedRE = regularExpression.replace(Regular.VARIABLE, newVariable);
         return Pattern.compile(modifiedRE);
     }

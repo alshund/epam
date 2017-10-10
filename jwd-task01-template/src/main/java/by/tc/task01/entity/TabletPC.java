@@ -1,28 +1,50 @@
 package by.tc.task01.entity;
 
 public class TabletPC extends Appliance{
+
     private int powerCapacity;
+
     private int displayInches;
+
     private int memoryRom;
+
     private int flashMemoryCapacity;
+
     private String color;
 
     @Override
     public String getAllParameters() {
-        return powerCapacity + " " + displayInches + " " + memoryRom + " " + flashMemoryCapacity + " " + color;
+
+        return "TablePC : POWER_CAPACITY = " + powerCapacity +
+                ", DISPLAY_INCHES = " + displayInches +
+                ", MEMORY_ROM = " + memoryRom +
+                ", FLASH_MEMORY_CAPACITY = " + flashMemoryCapacity +
+                ", COLOR = " + color + ";";
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         TabletPC tabletPC = (TabletPC) o;
 
-        if (powerCapacity != tabletPC.powerCapacity) return false;
-        if (displayInches != tabletPC.displayInches) return false;
-        if (memoryRom != tabletPC.memoryRom) return false;
-        if (flashMemoryCapacity != tabletPC.flashMemoryCapacity) return false;
+        if (powerCapacity != tabletPC.powerCapacity) {
+            return false;
+        }
+        if (displayInches != tabletPC.displayInches) {
+            return false;
+        }
+            if (memoryRom != tabletPC.memoryRom) {
+            return false;
+            }
+        if (flashMemoryCapacity != tabletPC.flashMemoryCapacity) {
+            return false;
+        }
         return color != null ? color.equals(tabletPC.color) : tabletPC.color == null;
     }
 

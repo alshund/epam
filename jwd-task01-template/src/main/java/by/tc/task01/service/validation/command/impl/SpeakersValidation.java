@@ -9,6 +9,7 @@ public class SpeakersValidation implements ValidationCommand {
 
     @Override
     public boolean executed(Criteria criteria, Object[] keyArray) {
+
         for (Object key : keyArray) {
             if (SearchCriteria.Speakers.FREQUENCY_RANGE.equals(key)) {
                 if (!Regular.isRange(String.valueOf(criteria.getValue(key)))) {

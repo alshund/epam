@@ -1,26 +1,44 @@
 package by.tc.task01.entity;
 
 public class Speakers extends Appliance{
+
     private int powerConsumption;
+
     private int numberOfSpeakers;
+
     private String frequencyRange;
+
     private int cordLength;
 
     @Override
     public String getAllParameters() {
-        return powerConsumption + " " + numberOfSpeakers + " " + frequencyRange + " " + cordLength;
+
+        return "Speakers : POWER_CONSUMPTION = " + powerConsumption +
+                ", NUMBER_OF_SPEAKERS = " + numberOfSpeakers +
+                ", FREQUENCY_RANGE = " + frequencyRange +
+                ", CORD_LENGTH " + cordLength + ";";
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Speakers speakers = (Speakers) o;
 
-        if (powerConsumption != speakers.powerConsumption) return false;
-        if (numberOfSpeakers != speakers.numberOfSpeakers) return false;
-        if (cordLength != speakers.cordLength) return false;
+        if (powerConsumption != speakers.powerConsumption) {
+            return false;
+        }
+        if (numberOfSpeakers != speakers.numberOfSpeakers) {
+            return false;
+        }
+        if (cordLength != speakers.cordLength) {
+            return false;
+        }
         return frequencyRange != null ? frequencyRange.equals(speakers.frequencyRange) : speakers.frequencyRange == null;
     }
 

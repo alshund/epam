@@ -7,9 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ValidationDirector {
+
     private Map<String, ValidationCommand> commands = new HashMap<>();
 
     public ValidationDirector() {
+
         commands.put("Oven", new OvenValidation());
         commands.put("Laptop", new LaptopValidation());
         commands.put("Speakers", new SpeakersValidation());
@@ -19,6 +21,7 @@ public class ValidationDirector {
     }
 
     public ValidationCommand getCommand(String applianceTypeName) {
+
         ValidationCommand command;
         command = commands.get(applianceTypeName);
         return command;

@@ -4,7 +4,6 @@ import by.tc.task01.dao.ApplianceDAO;
 import by.tc.task01.dao.DAOFactory;
 import by.tc.task01.entity.Appliance;
 import by.tc.task01.entity.criteria.Criteria;
-import by.tc.task01.main.PrintApplianceInfo;
 import by.tc.task01.service.ApplianceService;
 import by.tc.task01.service.validation.Validator;
 
@@ -14,7 +13,6 @@ public class ApplianceServiceImpl implements ApplianceService{
 	public <E> Appliance find(Criteria<E> criteria) {
 
 		if (!Validator.criteriaValidator(criteria)) {
-			PrintApplianceInfo.print(criteria.getApplianceTypeName());
 			return null;
 		}
 		

@@ -16,8 +16,12 @@ public class VacuumCleaner extends Appliance{
 
     @Override
     public String getAllParameters() {
-        return powerConsumption + " " + filterType + " " + bagType + " " +
-               wandType + " " + motorSpeedRegulation + " " + cleaningWidth;
+        return "VacuumCleaner : POWER_CONSUMPTION = " + powerConsumption +
+                ", FILTER_TYPE = " + filterType +
+                ", BAG_TYPE = " + bagType +
+                ", WAND_TYPE = " + wandType +
+                ", MOTOR_SPEED_REGULATION = " + motorSpeedRegulation +
+                ", CLEANING_WIDTH = " + cleaningWidth;
     }
 
     @Override

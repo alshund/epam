@@ -2,7 +2,7 @@ package by.tc.task01.entity;
 
 public class TabletPC extends Appliance{
 
-    private int powerCapacity;
+    private int batteryCapacity;
 
     private int displayInches;
 
@@ -15,7 +15,7 @@ public class TabletPC extends Appliance{
     @Override
     public String getAllParameters() {
 
-        return "TablePC : POWER_CAPACITY = " + powerCapacity +
+        return "TablePC : BATTERY_CAPACITY = " + batteryCapacity +
                 ", DISPLAY_INCHES = " + displayInches +
                 ", MEMORY_ROM = " + memoryRom +
                 ", FLASH_MEMORY_CAPACITY = " + flashMemoryCapacity +
@@ -33,7 +33,7 @@ public class TabletPC extends Appliance{
 
         TabletPC tabletPC = (TabletPC) o;
 
-        if (powerCapacity != tabletPC.powerCapacity) {
+        if (batteryCapacity != tabletPC.batteryCapacity) {
             return false;
         }
         if (displayInches != tabletPC.displayInches) {
@@ -50,7 +50,7 @@ public class TabletPC extends Appliance{
 
     @Override
     public int hashCode() {
-        int result = powerCapacity;
+        int result = batteryCapacity;
         result = 31 * result + displayInches;
         result = 31 * result + memoryRom;
         result = 31 * result + flashMemoryCapacity;
@@ -58,12 +58,12 @@ public class TabletPC extends Appliance{
         return result;
     }
 
-    public int getPowerCapacity() {
-        return powerCapacity;
+    public int getBatteryCapacity() {
+        return batteryCapacity;
     }
 
-    public void setPowerCapacity(int powerCapacity) {
-        this.powerCapacity = powerCapacity;
+    public void setBatteryCapacity(int batteryCapacity) {
+        this.batteryCapacity = batteryCapacity;
     }
 
     public int getDisplayInches() {

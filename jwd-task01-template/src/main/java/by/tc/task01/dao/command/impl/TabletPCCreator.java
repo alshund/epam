@@ -22,7 +22,7 @@ public class TabletPCCreator implements Command {
             switch (parameterIndex) {
                 case 0:
 
-                    tabletPC.setPowerCapacity(Integer.parseInt(parameters.get(parameterIndex)));
+                    tabletPC.setBatteryCapacity(Integer.parseInt(parameters.get(parameterIndex)));
                     break;
                 case 1:
 

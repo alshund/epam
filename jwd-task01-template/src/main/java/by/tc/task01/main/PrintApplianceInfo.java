@@ -14,9 +14,5 @@ public class PrintApplianceInfo {
 		}
 
 	}
-	
-	public static void print (String applianceType) {
-		System.out.print(applianceType + " invalid parameters! ");
-	}
 
 }

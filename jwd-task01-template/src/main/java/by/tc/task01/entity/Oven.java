@@ -18,7 +18,7 @@ public class Oven extends Appliance{
     public String getAllParameters() {
 
         return "Oven : POWER_CONSUMPTION = " + powerConsumption +
-                ", WIDTH = " + width +
+                ", WEIGHT = " + weight +
                 ", CAPACITY = " + capacity +
                 ", DEPTH = " + depth +
                 ", HEIGHT = " + height +
